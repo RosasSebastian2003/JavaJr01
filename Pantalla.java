@@ -1,16 +1,13 @@
-public class Pantalla {
+public abstract class Pantalla {
     String color;
     String tipo; 
     float precio;
     boolean isOn;
 
+    // Atributos privados 
     private String modelo;
     private String marca;
     private int resolucion;
-
-    Pantalla() {
-
-    }
 
     // Constructor parametrado
     Pantalla(String color, String modelo, String marca, String tipo, int resolucion, float precio) {
@@ -32,7 +29,7 @@ public class Pantalla {
         }
     }
 
-    private boolean toggle() {
+    boolean toggle() {
         if (isOn) {
             isOn = false;
             return isOn;
@@ -42,6 +39,8 @@ public class Pantalla {
         }
     }
 
+    public abstract void reEscale();
+    
     // Getters
     public String getModelo() {
         return modelo;
