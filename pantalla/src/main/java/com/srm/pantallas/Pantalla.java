@@ -1,3 +1,5 @@
+package com.srm.pantallas;
+
 public abstract class Pantalla {
     String color;
     String tipo; 
@@ -63,11 +65,6 @@ public abstract class Pantalla {
     // String como parametro
     public void setMarca(String marca){
         this.marca = marca;
-    }
-
-    // Enumerador como atributo
-    public void setMarca(ScreenBrands marca) {
-        this.marca = marca.toString();
     }
 
     public void setResolucion(int resolucion) {
