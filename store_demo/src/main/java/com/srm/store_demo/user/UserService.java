@@ -1,8 +1,8 @@
 package com.srm.store_demo.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -14,6 +14,17 @@ public class UserService {
 
     // GET all
     public List<User> getUsers() {
-        return userRepository.get;
+        return userRepository.findAll();
+    }
+
+    // POST
+    public void addUser(User user) {
+        Optional<User> userIsPresent = userRepository.findByEmail(user.getEmail());
+
+        if (userIsPresent.isPresent()) {
+            throw new IllegalStateException("Email is already taken");
+        }
+
+        userRepository.save(user);
     }
 }
