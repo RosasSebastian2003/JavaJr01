@@ -1,6 +1,9 @@
 package com.srm.store_demo.user;
 
 import org.springframework.stereotype.Service;
+
+import com.srm.store_demo.exceptions.ApiRequestException;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +25,8 @@ public class UserService {
         Optional<User> userIsPresent = userRepository.findByEmail(user.getEmail());
 
         if (userIsPresent.isPresent()) {
-            throw new IllegalStateException("Email is already taken");
+            throw new ApiRequestException("User with email " + user.getEmail() + " already exists");
         }
-
         userRepository.save(user);
     }
 

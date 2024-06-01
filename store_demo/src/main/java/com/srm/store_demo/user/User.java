@@ -1,6 +1,8 @@
 package com.srm.store_demo.user;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table
@@ -15,8 +17,14 @@ public class User {
         strategy = GenerationType.SEQUENCE,
         generator = "user_sequence"
     )
+
     private Long id;
-    private String name, email;
+
+    @NotBlank
+    private String name;
+
+    @Email(message = "Invalid email")
+    private String email;
 
     // Constructors
     public User() { }

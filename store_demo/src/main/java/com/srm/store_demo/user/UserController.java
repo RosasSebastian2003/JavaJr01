@@ -3,6 +3,9 @@ package com.srm.store_demo.user;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +32,7 @@ public class UserController {
 
     // POST
     @PostMapping("addUser")
-    public void addUser(@RequestBody User user) {
+    public void addUser(@Valid @RequestBody User user) {
         userService.addUser(user);
     }
 
