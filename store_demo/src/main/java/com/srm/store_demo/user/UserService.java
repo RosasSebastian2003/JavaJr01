@@ -17,6 +17,9 @@ public class UserService {
 
     // GET all
     public List<User> getUsers() {
+        if (userRepository.findAll().isEmpty()) {
+            throw new ApiRequestException("No users found");
+        }
         return userRepository.findAll();
     }
 
