@@ -16,7 +16,7 @@ public class UserService {
     }
 
     // GET all
-    public List<User> getUsers() {
+    public List<UserEntity> getUsers() {
         if (userRepository.findAll().isEmpty()) {
             throw new ApiRequestException("No users found");
         }
@@ -24,8 +24,8 @@ public class UserService {
     }
 
     // POST
-    public void addUser(User user) {
-        Optional<User> userIsPresent = userRepository.findByEmail(user.getEmail());
+    public void addUser(UserEntity user) {
+        Optional<UserEntity> userIsPresent = userRepository.findByEmail(user.getEmail());
 
         if (userIsPresent.isPresent()) {
             throw new ApiRequestException("User with email " + user.getEmail() + " already exists");

@@ -10,7 +10,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 
-import com.srm.store_demo.user.User;;
+import com.srm.store_demo.user.UserEntity;;
 
 @Entity
 @Table
@@ -30,11 +30,11 @@ public class Cart {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    private UserEntity user;
 
     public Cart() { }
 
-    public Cart(User user) {
+    public Cart(UserEntity user) {
         this.user = user;
     }
 }
